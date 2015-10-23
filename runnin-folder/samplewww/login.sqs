@@ -1,0 +1,62 @@
+
+cookie("somecook","somvalue",1);
+
+echo ("<HTML>");
+echo ("PAGE GENERATED FROM SQ PLUGIN");
+
+echo (_context["home"]);
+
+local  conparam="<pre>";
+
+conparam+="<b>_request[] table </b></br>";
+foreach(key,val in _request)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="<b>_get[] table </b></br>";
+foreach(key,val in _get)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="<b>_context[] table </b></br>";
+echo ("");
+foreach(key,val in _context)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="<b>_post[] table </b></br>";
+
+foreach(key,val in _post)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="<b>_cookies[] table </b></br>";
+echo ("");
+foreach(key,val in _cookies)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="</pre>";
+
+echo (conparam);
+
+echo (@"<pre> <b>addons: functions</b>
+
+echo(string);
+header(as_in_php_format);
+cookie(key,val,time);
+handle=fopen(name,how);
+fclose(handle);
+string = fread(handle, bytes);
+bytes=fwrite(handle, string);
+fseek(handle,where,pos);
+ftell(handle);
+fsize(handle);
+string = readfile(name, bytes);
+size=filesize(name);
+where=filestrstr(name, string);
+output=spawn(systrem-comando-or-external-program, retbytes);
+sendfile(filename); 	    //send the whole file content to client
+filelog(filename, string);  //append string to  a log filename
+filereplace(filename, string, replace) //replace in file
+
+");
+
+echo ("all other functions and language support as in <a href='http://www.squirrel-lang.org/'>squirrel-lang</a>");
+
+echo ("</HTML>");

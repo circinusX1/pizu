@@ -1,0 +1,55 @@
+
+cookie("somecook","somvalue",1);
+
+echo ("<HTML>");
+echo ("PAGE GENERATED FROM SQ PLUGIN");
+
+local  conparam="<pre>";
+
+conparam+="</fieldset><fieldset><h2>_request[] table </h2> </br>";
+foreach(key,val in _request)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="</fieldset><fieldset><h2>_get[] table </h2> </br>";
+foreach(key,val in _get)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="</fieldset><fieldset><h2>_context[] table </h2> </br>";
+echo ("");
+foreach(key,val in _context)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="</fieldset><fieldset><h2>_post[] table </h2> </br>";
+
+foreach(key,val in _post)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+
+foreach(key,val in _put)
+{
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+}
+
+
+if("FILENAME" in _post)
+{
+    conparam+="/var/www/rules-565-221/";
+    conparam+="<font color='red'> file size is: " + _post["FILESIZE"]+"</font><br>";
+
+    _this.save_file("/var/www/rules-565-221/upload.txt");
+}
+
+conparam+="</fieldset><fieldset><h2>_cookies[] table </h2> </br>";
+echo ("");
+foreach(key,val in _cookies)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="</pre>";
+
+
+
+echo (conparam);
+
+echo ("all other functions and language support as in <a href='http://www.squirrel-lang.org/'>squirrel-lang</a>");
+
+echo ("</HTML>");
