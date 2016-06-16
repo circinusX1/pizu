@@ -1,1 +1,299 @@
-# EXTRA LIGHT C++ HTTP SERVER WITH SERVER SIDE SCRIPT
+# SUPER LIGHT HTTP SERVER WITH SERVER SIDE SCRIPT
+
+
+
+### sq script page sample
+
+```javascript
+cookie("somecook","somvalue",1);
+
+echo ("<HTML>");
+echo ("PAGE GENERATED FROM SQ PLUGIN");
+
+local  conparam="<pre>";
+
+conparam+="</fieldset><fieldset><h2>_request[] table </h2> </br>";
+foreach(key,val in _request)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="</fieldset><fieldset><h2>_get[] table </h2> </br>";
+foreach(key,val in _get)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="</fieldset><fieldset><h2>_context[] table </h2> </br>";
+echo ("");
+foreach(key,val in _context)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="</fieldset><fieldset><h2>_post[] table </h2> </br>";
+
+foreach(key,val in _post)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+
+foreach(key,val in _put)
+{
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+}
+
+
+if("FILENAME" in _post)
+{
+    conparam+="/var/www/rules-565-221/";
+    conparam+="<font color='red'> file size is: " + _post["FILESIZE"]+"</font><br>";
+
+    _this.save_file("/var/www/rules-565-221/upload.txt");
+}
+
+conparam+="</fieldset><fieldset><h2>_cookies[] table </h2> </br>";
+echo ("");
+foreach(key,val in _cookies)
+	conparam+="<div >" + key + "=" + val + "</div>\n";
+
+conparam+="</pre>";
+
+
+
+echo (conparam);
+
+echo ("all other functions and language support as in <a href='http://www.squirrel-lang.org/'>squirrel-lang</a>");
+
+echo ("</HTML>");
+
+````
+
+### html page sample
+
+```javascript
+
+
+Skip to content
+This repository
+
+    Pull requests
+    Issues
+    Gist
+
+    @comarius
+
+1
+0
+
+    0
+
+comarius/pizu
+Code
+Issues 0
+Pull requests 0
+Wiki
+Pulse
+Graphs
+Settings
+pizu/runnin-folder/samplewww/index.html
+77eb07b on Oct 23, 2015
+@comarius comarius added configuration file samples
+executable file 195 lines (164 sloc) 5.57 KB
+<HTML>
+<div align='center'>
+
+<a href='some_images.html'>SOME IMAGES</a><br />
+<a href='somescript.sqs?param=value&param2=valuie2'>SQ SCRIPT</a><br />
+</div><div>
+
+<pre>
+<h2>BENCHANPRKS: 4 THREADS, concurent reqs 128. max requsts 10000. 
+Max cpu load cpu1: 34% cpu2: 34% cpu3: 34% cpu4:34%   5-8 1%</h2>
+
+<h3>index benchmarks</h3>
+$ ab -c <b>128</b> -n 10000 http://localhost:8000/
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 10000 requests
+...
+Finished 10000 requests
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            8000
+
+Document Path:          /
+Document Length:        1750 bytes
+
+Concurrency Level:      128
+Time taken for tests:   2.638 seconds
+Complete requests:      10000
+Failed requests:        7
+   (Connect: 0, Receive: 0, Length: 7, Exceptions: 0)
+Write errors:           0
+Total transferred:      19861824 bytes
+HTML transferred:       17521824 bytes
+<b>Requests per second:    3791.09 [#/sec] (mean)</b>
+Time per request:       33.763 [ms] (mean)
+Time per request:       0.264 [ms] (mean, across all concurrent requests)
+Transfer rate:          7353.31 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.3      0       5
+Processing:     2    9   8.8      9     647
+Waiting:        1    9   8.8      9     647
+Total:          5    9   8.8      9     647
+
+Percentage of the requests served within a certain time (ms)
+  50%      9
+  66%      9
+  75%      9
+  80%      9
+  90%     10
+  95%     10
+  98%     10
+  99%     11
+ 100%    647 (longest request)
+
+<h3>images benchmarks</h3>
+ab -c <b>128</b> -n 10000 http://localhost:8000/some_images.html
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+...
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            8000
+
+Document Path:          /some_images.html
+Document Length:        543 bytes
+
+Concurrency Level:      128
+Time taken for tests:   2.718 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      7760000 bytes
+HTML transferred:       5430000 bytes
+<b>Requests per second:    3679.64 [#/sec] (mean)</b>
+Time per request:       34.786 [ms] (mean)
+Time per request:       0.272 [ms] (mean, across all concurrent requests)
+Transfer rate:          2788.48 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0       4
+Processing:     6    9   9.1      9     467
+Waiting:        6    9   9.1      9     467
+Total:          7    9   9.2      9     470
+
+Percentage of the requests served within a certain time (ms)
+  50%      9
+  66%      9
+  75%      9
+  80%      9
+  90%     10
+  95%     10
+  98%     11
+  99%     12
+ 100%    470 (longest request)
+
+<h3>script benchmarks</h3>
+<B>$ ab -c <b>128</b> -n 10000 http://localhost:8000/somescript.sqs?param=value&param2=valuie2</B>
+[1] 2756
+$ This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+...
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        mariux/1.0
+Server Hostname:        localhost
+Server Port:            8000
+
+Document Path:          /somescript.sqs?param=value
+Document Length:        1210 bytes
+
+Concurrency Level:      128
+Time taken for tests:   3.954 seconds
+Complete requests:      10000
+Failed requests:        4766
+   (Connect: 0, Receive: 0, Length: 4766, Exceptions: 0)
+Write errors:           0
+Non-2xx responses:      4766
+Total transferred:      13010716 bytes
+HTML transferred:       9483466 bytes
+<b>Requests per second:    2529.36 [#/sec] (mean)</b>
+Time per request:       50.606 [ms] (mean)
+Time per request:       0.395 [ms] (mean, across all concurrent requests)
+Transfer rate:          3213.75 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   24 266.9      0    3015
+Processing:     4   17  39.8     12     680
+Waiting:        4   15  39.7     11     679
+Total:          5   41 297.9     12    3695
+
+Percentage of the requests served within a certain time (ms)
+  50%     12
+  66%     13
+  75%     14
+  80%     15
+  90%     21
+  95%     24
+  98%     68
+  99%    142
+ 100%   3695 (longest request)
+
+
+<H1>System info for benchmarking</H1>
+processor	: 0,1,2,3,4...8
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 30
+model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
+stepping	: 5
+cpu MHz		: 933.000
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 11
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm sse4_1 sse4_2 popcnt lahf_lm ida dts tpr_shadow vnmi flexpriority ept vpid
+bogomips	: 3458.13
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+</pre>
+
+</div>
+</HTML>
+
+    Status API Training Shop Blog About 
+
+    © 2016 GitHub, Inc. Terms Privacy Security Contact Help 
+
+
+
+```
+
+
