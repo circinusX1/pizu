@@ -62,59 +62,9 @@ echo ("</HTML>");
 
 ````
 
-### html page sample
+### TEST
 
 ```javascript
-
-
-Skip to content
-This repository
-
-    Pull requests
-    Issues
-    Gist
-
-    @comarius
-
-1
-0
-
-    0
-
-comarius/pizu
-Code
-Issues 0
-Pull requests 0
-Wiki
-Pulse
-Graphs
-Settings
-pizu/runnin-folder/samplewww/index.html
-77eb07b on Oct 23, 2015
-@comarius comarius added configuration file samples
-executable file 195 lines (164 sloc) 5.57 KB
-<HTML>
-<div align='center'>
-
-<a href='some_images.html'>SOME IMAGES</a><br />
-<a href='somescript.sqs?param=value&param2=valuie2'>SQ SCRIPT</a><br />
-</div><div>
-
-<pre>
-<h2>BENCHANPRKS: 4 THREADS, concurent reqs 128. max requsts 10000. 
-Max cpu load cpu1: 34% cpu2: 34% cpu3: 34% cpu4:34%   5-8 1%</h2>
-
-<h3>index benchmarks</h3>
-$ ab -c <b>128</b> -n 10000 http://localhost:8000/
-This is ApacheBench, Version 2.3 <$Revision: 655654 $>
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
-
-Benchmarking localhost (be patient)
-Completed 10000 requests
-...
-Finished 10000 requests
-
 
 Server Software:        
 Server Hostname:        localhost
@@ -154,11 +104,7 @@ Percentage of the requests served within a certain time (ms)
   99%     11
  100%    647 (longest request)
 
-<h3>images benchmarks</h3>
-ab -c <b>128</b> -n 10000 http://localhost:8000/some_images.html
-This is ApacheBench, Version 2.3 <$Revision: 655654 $>
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
+
 
 Benchmarking localhost (be patient)
 ...
@@ -203,12 +149,8 @@ Percentage of the requests served within a certain time (ms)
   99%     12
  100%    470 (longest request)
 
-<h3>script benchmarks</h3>
-<B>$ ab -c <b>128</b> -n 10000 http://localhost:8000/somescript.sqs?param=value&param2=valuie2</B>
-[1] 2756
-$ This is ApacheBench, Version 2.3 <$Revision: 655654 $>
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
+
+
 
 Benchmarking localhost (be patient)
 Completed 1000 requests
@@ -266,34 +208,3 @@ model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
 stepping	: 5
 cpu MHz		: 933.000
 cache size	: 6144 KB
-physical id	: 0
-siblings	: 8
-core id		: 0
-cpu cores	: 4
-apicid		: 0
-initial apicid	: 0
-fpu		: yes
-fpu_exception	: yes
-cpuid level	: 11
-wp		: yes
-flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm sse4_1 sse4_2 popcnt lahf_lm ida dts tpr_shadow vnmi flexpriority ept vpid
-bogomips	: 3458.13
-clflush size	: 64
-cache_alignment	: 64
-address sizes	: 36 bits physical, 48 bits virtual
-power management:
-
-</pre>
-
-</div>
-</HTML>
-
-    Status API Training Shop Blog About 
-
-    © 2016 GitHub, Inc. Terms Privacy Security Contact Help 
-
-
-
-```
-
-
