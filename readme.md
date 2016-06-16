@@ -2,6 +2,10 @@
 ## designed for embedded or small device which run Linux.
 
 
+* Dependencies: 
+  * https://github.com/comarius/mcosocks
+  * https://github.com/comarius/mcoutils
+
 ### sq script page sample
 
 ```javascript
@@ -208,3 +212,4 @@ model name	: Intel(R) Core(TM) i7 CPU       Q 740  @ 1.73GHz
 stepping	: 5
 cpu MHz		: 933.000
 cache size	: 6144 KB
+<!---->
