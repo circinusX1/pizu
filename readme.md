@@ -1,5 +1,5 @@
-# SUPER LIGHT HTTP SERVER WITH SERVER SIDE SCRIPT
-
+# SUPER LIGHT HTTP SERVER WITH SERVER SIDE SCRIPT (sq script)
+## designed for embedded or small device which run Linux.
 
 
 ### sq script page sample
